@@ -1,0 +1,4 @@
+farmer_name,farmer_surname,grain_count,area_count,staff_count,arrival_details,arrival_date
+John,Doe,120,50,5,Spring planting,2024-03-15
+John,Doe,120,50,5,Harvest,2024-09-10
+Jane,Smith,200,80,8,Inspection,2024-05-20

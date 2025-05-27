@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://viko.eif.lt/farmers"
+           xmlns="http://viko.eif.lt/farmers"
+           elementFormDefault="qualified">
+
+    <xs:element name="getFarmersRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getFarmersResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="farmer" type="Farmer" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="Farmer">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs="0"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="surname" type="xs:string"/>
+            <xs:element name="grainCount" type="xs:int"/>
+            <xs:element name="areaCount" type="xs:int"/>
+            <xs:element name="staffCount" type="xs:int"/>
+            <xs:element name="arrivals" type="ArrivalList" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ArrivalList">
+        <xs:sequence>
+            <xs:element name="arrival" type="Arrival" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Arrival">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs="0"/>
+            <xs:element name="arrivalDetails" type="xs:string"/>
+            <xs:element name="date" type="xs:date"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

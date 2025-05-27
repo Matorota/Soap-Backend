@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<farmers>
+    <farmer>
+        <name>John</name>
+        <surname>Doe</surname>
+        <grainCount>120</grainCount>
+        <areaCount>50</areaCount>
+        <staffCount>5</staffCount>
+        <arrivals>
+            <arrival>
+                <arrivalDetails>Spring planting</arrivalDetails>
+                <date/>
+            </arrival>
+            <arrival>
+                <arrivalDetails>Harvest</arrivalDetails>
+                <date/>
+            </arrival>
+        </arrivals>
+    </farmer>
+    <farmer>
+        <name>Jane</name>
+        <surname>Smith</surname>
+        <grainCount>200</grainCount>
+        <areaCount>80</areaCount>
+        <staffCount>8</staffCount>
+        <arrivals>
+            <arrival>
+                <arrivalDetails>Inspection</arrivalDetails>
+                <date/>
+            </arrival>
+        </arrivals>
+    </farmer>
+</farmers>

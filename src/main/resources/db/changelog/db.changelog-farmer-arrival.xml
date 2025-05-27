@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="3" author="matasStrimaitis">
+        <createTable tableName="farmer_arrival">
+            <column name="farmer_name" type="VARCHAR(255)"/>
+            <column name="farmer_surname" type="VARCHAR(255)"/>
+            <column name="grain_count" type="INT"/>
+            <column name="area_count" type="INT"/>
+            <column name="staff_count" type="INT"/>
+            <column name="arrival_details" type="VARCHAR(255)"/>
+            <column name="arrival_date" type="DATE"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="load-farmer-arrival-data" author="matasStrimaitis">
+        <loadData tableName="farmer_arrival"
+                  file="farmer-arrival.csv"
+                  separator=","
+                  relativeToChangelogFile="true"/>
+    </changeSet>
+</databaseChangeLog>
