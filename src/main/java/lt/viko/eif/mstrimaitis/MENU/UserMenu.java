@@ -24,9 +24,10 @@ public class UserMenu {
     private int displayMenu(Scanner input) {
         System.out.println("\nUSER MENU");
         System.out.println("1. List farmers");
-        System.out.println("2. Transform from POJO to XML");
-        System.out.println("3. Save xml file");
-        System.out.println("4. Exit");
+        System.out.println("2. List all connections (farmers and arrivals)");
+        System.out.println("3. Transform from POJO to XML");
+        System.out.println("4. Save xml file");
+        System.out.println("5. Exit");
         System.out.print("Choose: ");
         while (!input.hasNextInt()) {
             System.out.print("Enter a number: ");
@@ -48,11 +49,21 @@ public class UserMenu {
                         System.out.println("No farmers found.");
                     } else {
                         for (Farmer farmer : farmers) {
-                            System.out.println(farmer);
+                            System.out.println(farmer.getName() + " " + farmer.getSurname());
                         }
                     }
                     break;
                 case 2:
+                    farmers = farmerRepository.findAll();
+                    if (farmers.isEmpty()) {
+                        System.out.println("No farmers found.");
+                    } else {
+                        for (Farmer farmer : farmers) {
+                            System.out.println(farmer);
+                        }
+                    }
+                    break;
+                case 3:
                     ensureFarmersLoaded();
                     if (farmers.isEmpty()) {
                         System.out.println("No farmers to transform.");
@@ -61,7 +72,7 @@ public class UserMenu {
                         xmlService.transformToXml(farmersObj);
                     }
                     break;
-                case 3:
+                case 4:
                     ensureFarmersLoaded();
                     if (farmers.isEmpty()) {
                         System.out.println("No farmers to save.");
@@ -76,7 +87,7 @@ public class UserMenu {
                         }
                     }
                     break;
-                case 4:
+                case 5:
                     System.out.println("Thank you and goodbye!");
                     return;
                 default:
