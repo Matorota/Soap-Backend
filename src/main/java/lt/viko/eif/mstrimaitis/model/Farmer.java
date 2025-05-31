@@ -48,8 +48,6 @@ public class Farmer {
         this.arrivals = arrivals;
     }
 
-    // Getters and setters...
-
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public String getName() { return name; }

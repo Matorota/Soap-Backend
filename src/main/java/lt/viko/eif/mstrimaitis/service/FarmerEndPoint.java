@@ -1,12 +1,13 @@
 package lt.viko.eif.mstrimaitis.service;
 
-import lt.viko.eif.mstrimaitis.model.GetFarmerRequest;
-import lt.viko.eif.mstrimaitis.model.GetFarmerResponse;
+import lt.viko.eif.mstrimaitis.model.*;
 import lt.viko.eif.mstrimaitis.db.FarmerRepository;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
+
+import java.util.Collections;
 
 @Endpoint
 public class FarmerEndPoint {
@@ -21,7 +22,19 @@ public class FarmerEndPoint {
     @ResponsePayload
     public GetFarmerResponse getFarmer(@RequestPayload GetFarmerRequest request) {
         GetFarmerResponse response = new GetFarmerResponse();
-        farmerRepository.findByName(request.getName()).ifPresent(response::setFarmer);
+        farmerRepository.findByName(request.getName())
+                .ifPresentOrElse(
+                        farmer -> response.setFarmers(Collections.singletonList(farmer)),
+                        () -> response.setFarmers(Collections.emptyList())
+                );
+        return response;
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllFarmersRequest")
+    @ResponsePayload
+    public GetFarmerResponse getAllFarmers(@RequestPayload GetAllFarmersRequest request) {
+        GetFarmerResponse response = new GetFarmerResponse();
+        response.setFarmers(farmerRepository.findAll());
         return response;
     }
 }
